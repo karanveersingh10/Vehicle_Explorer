@@ -2,12 +2,13 @@ require "test_helper"
 
 class MakesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get makes_index_url
+    get makes_url
     assert_response :success
   end
 
   test "should get show" do
-    get makes_show_url
+    make = makes(:one)
+    get make_url(make)
     assert_response :success
   end
 end

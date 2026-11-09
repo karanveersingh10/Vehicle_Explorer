@@ -1,15 +1,275 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* VEHICLE EXPLORER */
+
+.vehicles-container {
+  max-width: 1150px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #202938;
+}
+
+.vehicles-header {
+  margin-bottom: 30px;
+}
+
+.vehicles-header h1 {
+  font-size: 34px;
+  font-weight: 750;
+  margin-bottom: 8px;
+  color: #172554;
+}
+
+.vehicles-header p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* SEARCH SECTION */
+
+.vehicle-search {
+  background: #ffffff;
+  padding: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.vehicle-search form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 18px;
+  align-items: end;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search-field label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.search-field input,
+.search-field select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+}
+
+.search-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  grid-column: 1 / -1;
+}
+
+.search-button,
+.clear-button,
+.details-button {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-button {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.search-button:hover,
+.details-button:hover {
+  background: #1d4ed8;
+  color: white;
+}
+
+.clear-button {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.clear-button:hover {
+  background: #e2e8f0;
+}
+
+/* HORIZONTAL VEHICLE CARDS */
+
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.vehicle-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 210px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+.vehicle-image {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  background: #f1f5f9;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.vehicle-information {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vehicle-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle-title h2 {
+  font-size: 22px;
+  margin: 0;
+  color: #172554;
+}
+
+.vehicle-year {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.vehicle-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.vehicle-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+
+.vehicle-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vehicle-details span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.vehicle-details strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.vehicle-card-footer {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.details-button {
+  background: #2563eb;
+  color: white;
+}
+
+/* PAGINATION */
+
+.vehicle-pagination {
+  margin: 35px 0;
+  text-align: center;
+}
+
+.vehicle-pagination .pagination {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.vehicle-pagination .pagination a,
+.vehicle-pagination .pagination span {
+  display: inline-block;
+  padding: 9px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  text-decoration: none;
+  color: #334155;
+  background: white;
+}
+
+.vehicle-pagination .pagination .current {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.vehicle-pagination .pagination a:hover {
+  background: #dbeafe;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 750px) {
+  .vehicle-search form {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-card {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-image {
+    height: 210px;
+  }
+
+  .vehicle-title {
+    align-items: flex-start;
+  }
+
+  .vehicle-details {
+    gap: 20px;
+  }
+
+  .vehicles-header h1 {
+    font-size: 27px;
+  }
+}

@@ -1,51 +1,108 @@
-<h1>Explore Vehicles</h1>
-<%= form_with url: vehicles_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.label :search, "Search by model or manufacturer" %>
-    <%= form.text_field :search, value: params[:search] %>
+<div class="vehicles-container">
+
+  <div class="vehicles-header">
+    <h1>Explore Vehicles</h1>
+    <p>Discover vehicles from different manufacturers and categories.</p>
   </div>
 
-  <div>
-    <%= form.label :make_id, "Filter by Manufacturer" %>
-    <%= form.collection_select :make_id, @makes, :id, :name,
-        { include_blank: "All Manufacturers" } %>
-  </div>
+  <div class="vehicle-search">
+    <%= form_with url: vehicles_path, method: :get, local: true do |form| %>
+      <div class="search-field">
+        <%= form.label :search, "Search by model or manufacturer" %>
+        <%= form.text_field :search, value: params[:search],
+            placeholder: "Search vehicles..." %>
+      </div>
 
-  <div>
-    <%= form.label :category_id, "Filter by Category" %>
-    <%= form.collection_select :category_id, @categories, :id, :name,
-        { include_blank: "All Categories" } %>
-  </div>
+      <div class="search-field">
+        <%= form.label :make_id, "Manufacturer" %>
+        <%= form.collection_select :make_id, @makes, :id, :name,
+            { include_blank: "All Manufacturers" } %>
+      </div>
 
-  <%= form.submit "Search and Filter" %>
-  <%= link_to "Clear Filters", vehicles_path %>
-<% end %>
+      <div class="search-field">
+        <%= form.label :category_id, "Category" %>
+        <%= form.collection_select :category_id, @categories, :id, :name,
+            { include_blank: "All Categories" } %>
+      </div>
 
-<p>Browse vehicles collected from the NHTSA API and sample data.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Vehicle Type</th>
-      <th>Category</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= vehicle.make.name %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.model_year %></td>
-        <td><%= vehicle.vehicle_type %></td>
-        <td><%= vehicle.categories.map(&:name).join(", ") %></td>
-        <td><%= link_to "View Details", vehicle_path(vehicle) %></td>
-      </tr>
+      <div class="search-buttons">
+        <%= form.submit "Search Vehicles", class: "search-button" %>
+        <%= link_to "Clear Filters", vehicles_path, class: "clear-button" %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<%= will_paginate @vehicles %>
+  </div>
+
+  <div class="vehicle-list">
+
+    <% @vehicles.each do |vehicle| %>
+
+      <%
+        image_urls = [
+          "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600",
+          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600",
+          "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600",
+          "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=600",
+          "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600",
+          "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600",
+          "https://images.unsplash.com/photo-1551830820-330a71b99659?w=600",
+          "https://images.unsplash.com/photo-1566933293069-b55c7f326dd4?w=600"
+        ]
+
+        image_url = image_urls[vehicle.id.to_i % image_urls.length]
+      %>
+
+      <div class="vehicle-card">
+
+        <div class="vehicle-image">
+          <img src="<%= image_url %>"
+               alt="<%= vehicle.make.name %> <%= vehicle.model %>"
+               loading="lazy">
+        </div>
+
+        <div class="vehicle-information">
+
+          <div class="vehicle-title">
+            <div>
+              <h2><%= vehicle.make.name %> <%= vehicle.model %></h2>
+              <p class="vehicle-year"><%= vehicle.model_year %> Model</p>
+            </div>
+
+            <span class="vehicle-badge">
+              <%= vehicle.vehicle_type %>
+            </span>
+          </div>
+
+          <div class="vehicle-details">
+            <div>
+              <span>Manufacturer</span>
+              <strong><%= vehicle.make.name %></strong>
+            </div>
+
+            <div>
+              <span>Model</span>
+              <strong><%= vehicle.model %></strong>
+            </div>
+
+            <div>
+              <span>Category</span>
+              <strong><%= vehicle.categories.map(&:name).join(", ") %></strong>
+            </div>
+          </div>
+
+          <div class="vehicle-card-footer">
+            <%= link_to "View Details", vehicle_path(vehicle),
+                class: "details-button" %>
+          </div>
+
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="vehicle-pagination">
+    <%= will_paginate @vehicles %>
+  </div>
+
+</div>
