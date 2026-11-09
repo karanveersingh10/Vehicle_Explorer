@@ -1,0 +1,33 @@
+<h1><%= @category.name %></h1>
+
+<p><strong>Description:</strong> <%= @category.description %></p>
+
+<h2>Vehicles in this Category</h2>
+
+<% if @category.vehicles.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @category.vehicles.each do |vehicle| %>
+        <tr>
+          <td><%= vehicle.make.name %></td>
+          <td><%= vehicle.model %></td>
+          <td><%= vehicle.model_year %></td>
+          <td><%= link_to "View Vehicle", vehicle_path(vehicle) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No vehicles found in this category.</p>
+<% end %>
+
+<%= link_to "Back to Categories", categories_path %>

@@ -1,0 +1,21 @@
+<h1><%= @make.name %></h1>
+
+<p><strong>Country:</strong> <%= @make.country %></p>
+
+<h2>Available Vehicles</h2>
+
+<% if @make.vehicles.any? %>
+  <ul>
+    <% @make.vehicles.each do |vehicle| %>
+      <li>
+        <%= vehicle.model %> -
+        <%= vehicle.model_year %>
+        (<%= link_to "View Vehicle", vehicle_path(vehicle) %>)
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No vehicles available for this manufacturer.</p>
+<% end %>
+
+<%= link_to "Back to Manufacturers", makes_path %>

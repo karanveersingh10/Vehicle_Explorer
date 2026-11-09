@@ -1,0 +1,28 @@
+<h1 class="mb-4">Vehicle Manufacturers</h1>
+
+<p class="text-muted">
+  Explore manufacturers and the vehicles they produce.
+</p>
+
+<div class="row g-4">
+  <% @makes.each do |make| %>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= make.name %></h5>
+
+          <p class="card-text">
+            <strong>Country:</strong> <%= make.country %>
+          </p>
+
+          <p class="card-text">
+            <strong>Total Vehicles:</strong> <%= make.vehicles.count %>
+          </p>
+
+          <%= link_to "View Details", make_path(make),
+              class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+<h1 class="mb-4">Vehicle Categories</h1>
+
+<p class="text-muted">
+  Explore vehicles by category.
+</p>
+
+<div class="row g-4">
+  <% @categories.each do |category| %>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= category.name %></h5>
+
+          <p class="card-text">
+            <%= category.description %>
+          </p>
+
+          <p class="card-text">
+            <strong>Total Vehicles:</strong>
+            <%= category.vehicles.count %>
+          </p>
+
+          <%= link_to "View Details", category_path(category),
+              class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

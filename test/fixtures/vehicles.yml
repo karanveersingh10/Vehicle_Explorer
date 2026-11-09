@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  make: one
+  model: MyString
+  model_year: 1
+  vehicle_type: MyString
+
+two:
+  make: two
+  model: MyString
+  model_year: 1
+  vehicle_type: MyString

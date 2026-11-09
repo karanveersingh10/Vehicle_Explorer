@@ -1,0 +1,51 @@
+<h1>Explore Vehicles</h1>
+<%= form_with url: vehicles_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :search, "Search by model or manufacturer" %>
+    <%= form.text_field :search, value: params[:search] %>
+  </div>
+
+  <div>
+    <%= form.label :make_id, "Filter by Manufacturer" %>
+    <%= form.collection_select :make_id, @makes, :id, :name,
+        { include_blank: "All Manufacturers" } %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "Filter by Category" %>
+    <%= form.collection_select :category_id, @categories, :id, :name,
+        { include_blank: "All Categories" } %>
+  </div>
+
+  <%= form.submit "Search and Filter" %>
+  <%= link_to "Clear Filters", vehicles_path %>
+<% end %>
+
+<p>Browse vehicles collected from the NHTSA API and sample data.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Vehicle Type</th>
+      <th>Category</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.make.name %></td>
+        <td><%= vehicle.model %></td>
+        <td><%= vehicle.model_year %></td>
+        <td><%= vehicle.vehicle_type %></td>
+        <td><%= vehicle.categories.map(&:name).join(", ") %></td>
+        <td><%= link_to "View Details", vehicle_path(vehicle) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @vehicles %>

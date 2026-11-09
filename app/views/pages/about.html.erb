@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <h1 class="mb-4">About Vehicle Explorer</h1>
+
+      <p>
+        Vehicle Explorer is a web application that allows users
+        to explore vehicle manufacturers, models, and categories.
+      </p>
+
+      <h3 class="mt-4">Data Sources</h3>
+
+      <h5 class="mt-3">1. NHTSA Vehicle API</h5>
+      <p>
+        The National Highway Traffic Safety Administration (NHTSA)
+        provides vehicle manufacturer and model information through
+        its public vPIC API.
+      </p>
+      <p>
+        <%= link_to "Visit NHTSA vPIC API",
+            "https://vpic.nhtsa.dot.gov/api/",
+            target: "_blank" %>
+      </p>
+
+      <h5 class="mt-3">2. Faker Gem</h5>
+      <p>
+        Faker generates additional sample vehicle records to help
+        populate and test the application database.
+      </p>
+
+      <h3 class="mt-4">Main Features</h3>
+      <ul>
+        <li>Browse vehicle manufacturers.</li>
+        <li>Explore vehicle models and details.</li>
+        <li>Browse vehicles by category.</li>
+        <li>Search by model or manufacturer.</li>
+        <li>Filter vehicles by manufacturer and category.</li>
+        <li>Navigate between related records.</li>
+      </ul>
+
+      <h3 class="mt-4">Technology Used</h3>
+      <ul>
+        <li>Ruby on Rails</li>
+        <li>SQLite Database</li>
+        <li>Bootstrap 5</li>
+        <li>NHTSA vPIC API</li>
+        <li>Faker Gem</li>
+      </ul>
+    </div>
+  </div>
+</div>

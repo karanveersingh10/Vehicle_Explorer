@@ -1,0 +1,39 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-dark text-white">
+    <h2 class="mb-0"><%= @vehicle.model %></h2>
+  </div>
+
+  <div class="card-body">
+    <p>
+      <strong>Manufacturer:</strong>
+      <%= link_to @vehicle.make.name, make_path(@vehicle.make) %>
+    </p>
+
+    <p>
+      <strong>Model:</strong>
+      <%= @vehicle.model %>
+    </p>
+
+    <p>
+      <strong>Model Year:</strong>
+      <%= @vehicle.model_year %>
+    </p>
+
+    <p>
+      <strong>Vehicle Type:</strong>
+      <%= @vehicle.vehicle_type %>
+    </p>
+
+    <p><strong>Categories:</strong></p>
+
+    <% @vehicle.categories.each do |category| %>
+      <%= link_to category.name, category_path(category),
+          class: "badge bg-primary text-decoration-none me-2" %>
+    <% end %>
+
+    <div class="mt-4">
+      <%= link_to "Back to Vehicles", vehicles_path,
+          class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

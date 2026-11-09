@@ -1,0 +1,81 @@
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+  <div class="container-fluid py-4">
+    <h1 class="display-4 fw-bold">Welcome to Vehicle Explorer</h1>
+
+    <p class="fs-5">
+      Discover vehicle manufacturers, explore different models,
+      and learn about vehicle categories.
+    </p>
+
+    <%= link_to "Explore Vehicles", vehicles_path,
+        class: "btn btn-primary btn-lg mt-3" %>
+  </div>
+</div>
+
+<h2 class="mb-4">Explore Our Database</h2>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h4 class="card-title">Vehicles</h4>
+        <p>Browse vehicle models and their details.</p>
+        <%= link_to "View Vehicles", vehicles_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h4 class="card-title">Manufacturers</h4>
+        <p>Explore vehicle manufacturers and their models.</p>
+        <%= link_to "View Manufacturers", makes_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h4 class="card-title">Categories</h4>
+        <p>Discover different types of vehicles.</p>
+        <%= link_to "View Categories", categories_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="mt-5 mb-4">Database Statistics</h2>
+
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm">
+      <div class="card-body">
+        <h2><%= Vehicle.count %></h2>
+        <p>Total Vehicles</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm">
+      <div class="card-body">
+        <h2><%= Make.count %></h2>
+        <p>Manufacturers</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm">
+      <div class="card-body">
+        <h2><%= Category.count %></h2>
+        <p>Categories</p>
+      </div>
+    </div>
+  </div>
+</div>
